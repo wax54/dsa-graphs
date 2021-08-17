@@ -79,6 +79,26 @@ class Graph {
     return result;
   }
 
+  shortestPath(v1, v2) {
+    let testSet = new Set([v1]);
+    let counter = 0;
+    while(!testSet.has(v2)) {
+      let temp = new Set(testSet);
+      for(let testedNode of testSet) {
+        for(let node of testedNode.adjacent) {
+          temp.add(node);
+        }
+      }
+      //no new vertices added
+      //should find a better way of determining "END";
+
+      if (temp.size === testSet.size) return false;
+      testSet = temp;
+      counter++;
+    }
+    return counter;
+  }
+
 }
 
 

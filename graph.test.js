@@ -198,3 +198,36 @@ describe("BFS", function() {
     ]);
   });
 });
+
+
+
+describe("shortestPath", function () {
+  it("should return shortest path for two nodes on graph", function () {
+    let graph = new Graph();
+    let S = new Node("S");
+    let P = new Node("P");
+    let U = new Node("U");
+    let X = new Node("X");
+    let Q = new Node("Q");
+    let Y = new Node("Y");
+    let V = new Node("V");
+    let R = new Node("R");
+    let W = new Node("W");
+    let T = new Node("T");
+
+    graph.addVertices([S, P, U, X, Q, Y, V, R, W, T]);
+
+    graph.addEdge(S, P);
+    graph.addEdge(S, U);
+    graph.addEdge(U, X);
+    graph.addEdge(S, Q);
+    graph.addEdge(Y, Q);
+    graph.addEdge(Y, P);
+
+
+    expect(graph.shortestPath(P, U)).toBe(2);
+    expect(graph.shortestPath(P, W)).toBe(false);
+    expect(graph.shortestPath(P, X)).toBe(3);
+
+  });
+});
